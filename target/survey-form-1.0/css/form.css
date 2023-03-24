@@ -1,0 +1,328 @@
+/*
+Name: Pranay Sharma
+G# G01393761
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/* Basic page style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --main-grey: #ccc;
+  --sub-grey: #d9d9d9;
+  --main-blue: #003B64;
+  --main-yellow: #F6FBA2;
+  --main-green: #63847d;
+
+}
+
+
+body {
+  display: flex;
+  position: absolute
+  height: 100vh;
+  top: 0%;
+  left: 0%;
+  justify-content: center; /*center vertically */
+  align-items: center; /* center horizontally */
+  background: linear-gradient(135deg, var(--main-blue), var(--main-yellow));
+  padding: 10px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+/* container and form */
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+}
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.container .title::before {
+  content: "";
+  position: absolute;
+  height: 3.5px;
+  width: 30px;
+  background: linear-gradient(135deg, var(--main-blue), var(--main-yellow));
+  left: 0;
+  bottom: 0;
+}
+
+.container form .user__details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+
+/* inside the form user details */
+
+form .user__details .input__box {
+  width: calc(100% / 2 - 20px);
+  margin-bottom: 15px;
+}
+
+.user__details .input__box .details {
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+.user__details input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--main-grey);
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.user__details input:focus,
+.user__details input:valid {
+  border-color: var(--main-green);
+}
+
+form .interest__title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+form .interest__details {
+  padding-top: 0.3em;
+}
+
+/* checkbox & radio button */
+
+form .liking__about .category {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%;
+  margin: 15px 0;
+  justify-content: space-between;
+}
+
+.liking__about .category label {
+  display: flex;
+  align-items: center;
+}
+
+.liking__about .category .check {
+  height: 18px;
+  width: 18px;
+  background: var(--sub-grey);
+  margin: 5px;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+form .interest__details .category {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 80%;
+  margin: 15px 0.5;
+  justify-content: space-between;
+}
+
+.interest__details .category label {
+  display: flex;
+  align-items: center;
+}
+
+
+.interest__details .category .dot {
+  height: 18px;
+  width: 18px;
+  background: var(--sub-grey);
+  border-radius: 50%;
+  margin: 10px;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#dot-1:checked ~ .category .one,
+#dot-2:checked ~ .category .two,
+#dot-3:checked ~ .category .three,
+#dot-4:checked ~ .category .four {
+  border-color: var(--sub-grey);
+  background: var(--main-green);
+}
+
+#check-1:checked ~ .category .one,
+#check-2:checked ~ .category .two,
+#check-3:checked ~ .category .three,
+#check-4:checked ~ .category .four,
+#check-5:checked ~ .category .five,
+#check-6:checked ~ .category .six{
+  border-color: var(--sub-grey);
+  background: var(--main-green);
+
+}
+
+form input[type="radio"] {
+  display: none;
+}
+
+form input[type="checkbox"] {
+  display: none;
+}
+
+/* Drop down */
+
+form .drop {
+  padding-top: 1em;
+}
+
+form .drop .interest__title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+form .dropbtn {
+    display: grid;
+    width: 100%;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+
+select {
+  color: #757575;
+  font-size: 16px;
+  font-weight: 200;
+  text-align: center;
+  width: 350px;
+  margin: 1px;
+  height: 42px;
+}
+
+select:focus,
+select:selected{
+   color: black;
+   border-color: var(--main-green);
+   font-size: 16px;
+   font-weight: 500;
+}
+
+/* Raffle */
+
+form .user__details .input__box__raffle {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+form .user__details .input__box__raffle .details {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+/* additional comments */
+
+form .user__details .input__box__cmts {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+form .user__details .input__box__cmts .details {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.user__details .input__box__cmts .input__cmts {
+  height: 80px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--main-grey);
+  padding: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+/* submit button */
+
+form .button__container {
+    padding-left: 5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+form .button {
+  width: 70%;
+  height: 45px;
+  margin: 45px 0;
+}
+
+form .button input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--main-blue), var(--main-yellow));
+  transition: all 0.3s ease;
+}
+
+form .button input:hover {
+  background: linear-gradient(135deg, var(--main-blue), #F9EA8F);
+}
+
+ form .cancel__button {
+      position: absolute;
+      right: 10px;
+      bottom:  10px;
+}
+
+
+/* for media and phone viewing */
+
+@media only screen and (max-width: 584px) {
+  .container {
+    max-width: 100%;
+  }
+
+  form .user__details .input__box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  form .interest__details .liking__about .category {
+    width: 100%;
+  }
+
+  .container form .user__details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .user__details::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
