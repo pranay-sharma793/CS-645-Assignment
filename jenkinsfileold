@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "swe645docker/swe645-group-project"
+        registry = "pranaysharma793/surveyformcd"
         registryCredential = 'dockercred'
     }
     agent any
