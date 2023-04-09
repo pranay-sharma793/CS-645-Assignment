@@ -6,16 +6,14 @@
 #
 #CMD ["catalina.sh", "run"]
 
+# Use official Tomcat runtime as a parent image
+FROM tomcat:9.0.31-jdk8-openjdk
 
-FROM maven:3.8.3-openjdk-11 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
-COPY src /app/src
-RUN mvn package -DskipTests
+# Copy the war file into the container
+COPY target/*.war /usr/local/tomcat/webapps/
 
-FROM tomcat:9-jdk11-openjdk-slim
-WORKDIR /usr/local/tomcat/webapps
-COPY --from=build target/*.war /usr/local/tomcat/webapps/
+# Expose port 8080 for the container
 EXPOSE 8080
+
+# Start Tomcat server
 CMD ["catalina.sh", "run"]
