@@ -55,7 +55,7 @@ pipeline {
       stage('Deploying Rancher to single pod') {
          steps {
             script{
-               sh 'kubectl set image deployment/deploymentone container-0=19982707/studentsurvey645:0.1'
+               sh 'kubectl set image deployment/surveyform container-1=pranaysharma793/surveyformcd:'+tag
             }
          }
       }
