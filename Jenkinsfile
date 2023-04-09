@@ -1,5 +1,4 @@
 pipeline {
-    @NonCPS
     environment {
         registry = "pranaysharma793/surveyformcd"
         registryCredential = 'dockercred'
