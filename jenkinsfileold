@@ -18,11 +18,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('',registryCredential) {
-                        def image = docker.build('pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}', '.')
-                        docker.withRegistry('',registryCredential) {
-                            image.push()
-                        }
-                    }
+                        sh 'docker push pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}'
+                   }
                 }
             }
         }
