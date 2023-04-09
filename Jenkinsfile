@@ -1,4 +1,5 @@
 pipeline {
+    @NonCPS
     environment {
         registry = "swe645docker/swe645-group-project"
         registryCredential = 'dockercred'
