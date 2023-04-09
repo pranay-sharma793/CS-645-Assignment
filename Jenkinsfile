@@ -1,3 +1,8 @@
+@NonCPS
+def generateTag() {
+    return "build-" + new Date().format("yyyyMMdd-HHmmss")
+}
+
 pipeline {
     environment {
         registry = "pranaysharma793/surveyformcd"
@@ -13,8 +18,9 @@ pipeline {
                     sh 'mvn clean package'
                     sh 'echo ${BUILD_TIMESTAMP}'
 //                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
+                    tag = generateTag()
                     docker.withRegistry('',registryCredential){
-                      def customImage = docker.build("pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}")
+                      def customImage = docker.build("pranaysharma793/surveyformcd:"+tag)
                    }
                }
             }
@@ -26,7 +32,7 @@ pipeline {
                     sh 'echo ${BUILD_TIMESTAMP}'
 //                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
                     docker.withRegistry('',registryCredential) {
-                        def image = docker.build('pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}', '.')
+                        def image = docker.build('pranaysharma793/surveyformcd:'+tag, '.')
                         docker.withRegistry('',registryCredential) {
                             image.push()
                         }
