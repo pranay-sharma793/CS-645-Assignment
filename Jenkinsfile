@@ -12,7 +12,7 @@ pipeline {
                 script {
                     sh 'mvn clean package'
                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
-                    docker.withRegistry('',registryCredential){
+                    docker.withRegistry('https://index.docker.io/v1/',registryCredential){
                       def customImage = docker.build("pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}")
                    }
                }
