@@ -1,23 +1,49 @@
 pipeline {
-  agent any
+    environment {
+        registry = "swe645docker/swe645-group-project"
+        registryCredential = 'dockercred'
+    }
+    agent any
 
-  stages {
-    stage('Build') {
-      steps {
-        sh 'mvn clean package'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh 'mvn test'
-      }
-    }
-    stage('Deploy') {
-      steps {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+                docker.withRegistry('',registryCredential){
+                  def customImage = docker.build("pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}")
+               }
+            }
+        }
 
-        sh 'docker build -t survey-form .'
-        sh 'docker run -p 8080:8080 myapp'
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry('',registryCredential) {
+                        def image = docker.build('pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}', '.')
+                        docker.withRegistry('',registryCredential) {
+                            image.push()
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // stage('Deploy to Rancher') {
+        //     steps {
+        //         withCredentials([string(credentialsId: 'RANCHER-URL-CREDENTIALS-ID', variable: 'RANCHER_URL'),
+        //                           string(credentialsId: 'RANCHER-API-TOKEN-CREDENTIALS-ID', variable: 'RANCHER_API_TOKEN')]) {
+        //             sh "rancher login $RANCHER_URL -t $RANCHER_API_TOKEN --context $RANCHER_CONTEXT"
+        //             sh "rancher kubectl set image deployment/YOUR-DEPLOYMENT-NAME YOUR-CONTAINER-NAME=YOUR-DOCKER-USERNAME/YOUR-IMAGE-NAME:$BUILD_NUMBER --namespace YOUR-NAMESPACE"
+        //         }
+        //     }
+        // }
+
+      stage('Deploying Rancher to single pod') {
+         steps {
+            script{
+               sh 'kubectl set image deployment/deploymentone container-0=19982707/studentsurvey645:0.1'
+            }
+         }
       }
-    }
-  }
+
 }
