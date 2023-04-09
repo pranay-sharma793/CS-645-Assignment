@@ -1,7 +1,7 @@
 pipeline {
     @NonCPS
     environment {
-        registry = "swe645docker/swe645-group-project"
+        registry = "pranaysharma793/surveyformcd"
         registryCredential = 'dockercred'
     }
     agent any
@@ -13,7 +13,7 @@ pipeline {
                 script {
                     sh 'mvn clean package'
 //                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
-                    docker.withRegistry('','pranaysharma793','Prakhar@78'){
+                    docker.withRegistry('',registryCredential){
                       def customImage = docker.build("pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}")
                    }
                }
@@ -23,7 +23,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
+//                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
                     docker.withRegistry('',registryCredential) {
                         def image = docker.build('pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}', '.')
                         docker.withRegistry('',registryCredential) {
