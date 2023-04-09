@@ -11,6 +11,7 @@ pipeline {
             steps {
                 script {
                     sh 'mvn clean package'
+                    sh 'echo ${BUILD_TIMESTAMP}'
 //                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
                     docker.withRegistry('',registryCredential){
                       def customImage = docker.build("pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}")
@@ -22,6 +23,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
+                    sh 'echo ${BUILD_TIMESTAMP}'
 //                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
                     docker.withRegistry('',registryCredential) {
                         def image = docker.build('pranaysharma793/surveyformcd:${BUILD_TIMESTAMP}', '.')
