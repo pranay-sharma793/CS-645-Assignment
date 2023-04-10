@@ -2,14 +2,14 @@
 
 ### Initial Setup
 
-- commit ur code for HW1 on a github repository
-- create a repository on docker hub and push ur .war file
+- commit ur code for HW1 on a github repository. (https://github.com/pranay-sharma793/CS-645-Assignment)
+- create a repository on docker hub and push ur .war file (https://hub.docker.com/repository/docker/pranaysharma793/surveyformcd/general)
 
 ---
 
 ### Ubuntu Server / Docker
 
-- Start EC2 instance, with ubuntu AMI.
+- Start EC2 instance, with ubuntu AMI. (Rancher Dashboard: https://ec2-34-198-210-248.compute-1.amazonaws.com/dashboard/home)
 - Install docker in it
 - run rancher on it
 - rancher started, can be checked by ‘sudo docker ps’
@@ -20,7 +20,7 @@
 
 ### Kubernetes Registration, cluster creation and deployment.
 
-- Create another EC2 instance, making sure it has enough space (Min. 25GB) having ubuntu AMI
+- Create another EC2 instance, making sure it has enough space (Min. 25GB) having ubuntu AMI. (K8s server: ec2-54-147-49-153.compute-1.amazonaws.com)
 - after installing docker on this, register the nodes for our cluster on this with the provided command. This instance will host our etcd, control panel and the worker nodes.
 - Once this cluster is active, we create two deployments (nodeport and loadbalancer)
 - We download the KubeConfig file for our cluster and keep it.
@@ -33,7 +33,7 @@
 
 ### Automating build and release using Jenkins
 
-- we create another EC2 instance for hosting Jenkins.
+- we create another EC2 instance for hosting Jenkins. (Jenkins: http://ec2-54-211-13-48.compute-1.amazonaws.com:8080)
 - We install java on this instance and install jenkins
 - We then create a directory .kube and paste the contents of the file ‘KubeConfig‘ by creating file ‘config’
 - we check the current_context (kubectl config current-context), and it returns  our cluster_name created in rancher.
