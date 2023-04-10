@@ -34,10 +34,10 @@
 ### Automating build and release using Jenkins
 
 - we create another EC2 instance for hosting Jenkins. (Jenkins: http://ec2-54-211-13-48.compute-1.amazonaws.com:8080)
-- We install java on this instance and install jenkins
+- We install java on this instance and install jenkins. (https://pkg.jenkins.io/debian/)
 - We then create a directory .kube and paste the contents of the file ‘KubeConfig‘ by creating file ‘config’
 - we check the current_context (kubectl config current-context), and it returns  our cluster_name created in rancher.
-- We then create a jenkins pipeline and install necessary plugins. (CloudBees docker & Rancher)
+- We then create a jenkins pipeline and install necessary plugins. (CloudBees docker & Rancher). (https://docs.cloudbees.com/docs/admin-resources/latest/plugins/docker-workflow / https://plugins.jenkins.io/rancher/)
 - We configure the pipeline, with source as the github repo. Polling the SCM every minute and provide access to JenkinsFile stored in our github repo.
 - We created and push ‘JenkinsFile’ consisting of stages which include, a. Build. b. Push to docker hub. c. Deploy on Rancher single node. d. Deploy on rancher
 - Once the pipeline is successfully setup. Whenever we make any change to the code and push it to GitHub it keeps polling SCM and triggers a new build. Once all the steps are completed. We see the new build is pushed to docker hub and the image in also updated in our Rancher deployments, now hosting the newly created build.
