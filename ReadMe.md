@@ -1,9 +1,10 @@
 ### Refer to the Instructions file for extended installation steps and supported screenshots.
 
-### Installation video
+### Demo Videos
+#### Installation video
 https://gmuedu-my.sharepoint.com/:v:/g/personal/psharm24_gmu_edu/EUOEQ5rCf8FPuqOZi__b_fsBcXzFEWY17IiIplys5i6xjg?e=eJkWib
 
-### Demo Video
+#### Demo Video
 https://gmuedu-my.sharepoint.com/:v:/g/personal/mraval_gmu_edu/EYuFnHbuHh1Bh1TjcyLDx0gBFrhUCOaczepkDZSus7MsFQ?e=f06jHq4
 
 ### Initial Setup
