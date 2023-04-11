@@ -17,7 +17,6 @@ pipeline {
                 script {
                     sh 'mvn clean package'
                     sh 'echo ${BUILD_TIMESTAMP}'
-//                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
                     tag = generateTag()
                     docker.withRegistry('',registryCredential){
                       def customImage = docker.build("pranaysharma793/surveyformcd:"+tag)
@@ -30,7 +29,6 @@ pipeline {
             steps {
                 script {
                     sh 'echo ${BUILD_TIMESTAMP}'
-//                     echo "Prakhar@79" | docker login --username pranaysharma793 --password-stdin
                     docker.withRegistry('',registryCredential) {
                         def image = docker.build('pranaysharma793/surveyformcd:'+tag, '.')
                         docker.withRegistry('',registryCredential) {
