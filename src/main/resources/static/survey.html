@@ -1,0 +1,190 @@
+<!--
+Name: Pranay Sharma
+G# G01393761
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student Survey Form</title>
+    <meta charset="UTF-8">
+
+<!--    Link to css file-->
+    <link rel="stylesheet" href="./css/form.css" type="text/css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="container">
+                <div class="title">Student Survey updated</div>
+                <form action="#">
+
+                    <!-- div for initial details-->
+                    <div class="user__details">
+
+                        <div class="input__box">
+                            <span class="details">First Name</span>
+                            <!-- input text using placeholder and required values -->
+                            <input type="text" placeholder="eg: John" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">Last Name</span>
+                            <input type="text" placeholder="eg: Miller" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">Street Address</span>
+                            <input type="text" placeholder="eg: 1234 Main Street" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">City</span>
+                            <input type="text" placeholder="eg: Fairfax" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">State</span>
+                            <input type="text" placeholder="eg: VA" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">Zip Code</span>
+                            <!-- input with pattern check for 5 digit zip -->
+                            <input type="text" pattern="[0-9]{5}" placeholder="eg: 22030" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">Phone Number</span>
+                            <!-- input with pattern check for 10 digit phone number -->
+                            <input type="tel" pattern="[0-9]{10}" placeholder="eg: 1234567890" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">E-mail</span>
+                            <!-- input type email validates email pattern -->
+                            <input type="email" placeholder="eg: abc@yahoo.com" required>
+                        </div>
+                        <div class="input__box">
+                            <span class="details">Date of Survey</span>
+                            <!-- input set as text when clicked become date with placeholder -->
+                            <input type="text" placeholder="eg: 02/28/2023" onfocus = "(this.type = 'date')" required>
+                        </div>
+                    </div>
+
+                    <!-- div for checkboxes, arranged in two rows of three -->
+                    <div class="liking__about">
+                        <input type="checkbox" id="check-1">
+                        <input type="checkbox" id="check-2">
+                        <input type="checkbox" id="check-3">
+                        <input type="checkbox" id="check-4">
+                        <input type="checkbox" id="check-5">
+                        <input type="checkbox" id="check-6">
+                        <span class="interest__title">Most liked about the campus</span>
+                        <div class="category">
+                            <label for="check-1">
+                                <span class="check one"></span>
+                                <span>Students</span>
+                            </label>
+                            <label for="check-2">
+                                <span class="check two"></span>
+                                <span>Location</span>
+                            </label>
+                            <label for="check-3">
+                                <span class="check three"></span>
+                                <span>Campus</span>
+                            </label>
+                        </div>
+                        <div class="category">
+                            <label for="check-4">
+                                <span class="check four"></span>
+                                <span>Atmosphere</span>
+                            </label>
+                            <label for="check-5">
+                                <span class="check five"></span>
+                                <span>Sports</span>
+                            </label>
+                            <label for="check-6">
+                                <span class="check six"></span>
+                                <span>Dorm Rooms</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- div for radio button-->
+                    <div class="interest__details">
+                        <input type="radio" name="interest" id="dot-1" required>
+                        <input type="radio" name="interest" id="dot-2">
+                        <input type="radio" name="interest" id="dot-3">
+                        <input type="radio" name="interest" id="dot-4" onClick ="radio" value="other">
+                        <span class="interest__title">Interest in university</span>
+                        <div class="category">
+                            <label for="dot-1">
+                                <span class="dot one"></span>
+                                <span>Friends</span>
+                            </label>
+                            <label for="dot-2">
+                                <span class="dot two"></span>
+                                <span>Television</span>
+                            </label>
+                            <label for="dot-3">
+                                <span class="dot three"></span>
+                                <span>Internet</span>
+                            </label>
+                            <label for="dot-4">
+                                <span class="dot four"></span>
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- div for drop mrnu -->
+                    <div class="drop">
+                        <span class="interest__title">How likely would you recommend this school</span>
+                        <div class="dropbtn">
+                            <select id="recommend" required>
+                                <option selected disabled hidden>Select an Option</option>
+                                <option class="options" value="Very Likely">Very Likely</option>
+                                <option class="options" value="Likely">Likely</option>
+                                <option class="options" value="Unlikely">Unlikely</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- div to take values for raffle-->
+                    <div class="user__details">
+                        <div class="input__box__raffle">
+                            <span class="details">Raffle (Movie ticket winners announced every Monday!)</span>
+                            <input type="text" placeholder="Enter at-least 10 comma separated numbers ranging 1-100" required>
+                        </div>
+                    </div>
+
+                    <!-- div for additional comments using textarea-->
+                    <div class="user__details">
+                        <div class="input__box__cmts">
+                            <span class="details">Additional Comments</span>
+                            <textarea type="text" class="input__cmts" placeholder="Write a comment. (Optional)" v-model="newItem" @keyup.enter="addItem()"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="button__container">
+                        <div class="button">
+                            <input type="submit" value="Register">
+                        </div>
+                        <div class="button">
+                            <input type="button" onclick="myFunction()" value="Cancel">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- script to confirm cancel button -->
+    <script>
+        function myFunction() {
+          let text;
+          if (confirm("Cancel Form Submission?") == true) {
+                window.history.back();
+          }
+        }
+    </script>
+</body>
+
+</html>
