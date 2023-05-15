@@ -4,7 +4,6 @@ import com.studentsurvey.entity.SurveyForm;
 import com.studentsurvey.service.DataController;
 import com.studentsurvey.serviceImpl.DataHandlerImpl;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +21,13 @@ public class DataControllerImpl implements DataController {
 
     private SurveyForm form;
 
+    @GetMapping("/getall")
     public ResponseEntity<?> getAllEntities() {
         List<SurveyForm> entities = service.getAllEntries();
         return new ResponseEntity<>(entities, HttpStatus.OK);
     }
 
+    @PostMapping("/create")
     public ResponseEntity<?> createEntity(@RequestBody SurveyForm form) {
         service.addEntry(form);
         return new ResponseEntity<>(form, HttpStatus.CREATED);
